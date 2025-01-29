@@ -1,16 +1,17 @@
 {
-    "title": "App 1",
-    "image": "app1.jpg",  // Image is included here
-    "short_description": "This is a brief description of App 1.",
+    "title": "WhatsApp Messenger",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
+    "short_description": "WhatsApp is a free messaging app for Android and other smartphones.",
     "specifications": {
-        "Version": "1.0",
-        "Size": "10MB",
-        "Required Android": "5.0 and up"
+        "Version": "2.23.24.78",
+        "Size": "50MB",
+        "Developer": "WhatsApp LLC",
+        "Last Updated": "January 2025"
     },
     "long_description": {
-        "h1": "App 1 Full Description",
-        "h2": "Why You Should Use App 1",
-        "content": "This is a detailed description of App 1. It provides XYZ features."
+        "h1": "Why Use WhatsApp?",
+        "h2": "Fast & Secure",
+        "content": "WhatsApp provides end-to-end encryption for all messages and calls."
     },
-    "download": "https://example.com/download/app1.apk"
+    "download": "https://yourdirectapilink.com/whatsapp.apk"
 }
