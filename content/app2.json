@@ -1,17 +1,10 @@
 {
-    "title": "Telegram Messenger",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
-    "short_description": "Telegram is a cloud-based messaging app for mobile and desktop.",
-    "specifications": {
-        "Version": "8.0.0",
-        "Size": "60MB",
-        "Developer": "Telegram Messenger LLP",
-        "Last Updated": "January 2025"
-    },
-    "long_description": {
-        "h1": "Why Use Telegram?",
-        "h2": "Secure & Fast",
-        "content": "Telegram provides encrypted messaging with speed and security."
-    },
-    "download": "https://yourdirectapilink.com/telegram.apk"
+    "title": "Hill Climb Racing 2",
+    "image": "data:image/png;base64,....", 
+    "size": "190MB",
+    "rating": "4.5",
+    "version": "1.64.0",
+    "short_description": "Unlimited Money",
+    "long_description": "This is a fun racing game with endless tracks...",
+    "download_link": "https://example.com/hill-climb-racing-2.apk"
 }
