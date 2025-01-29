@@ -20,31 +20,58 @@
         document.addEventListener("DOMContentLoaded", function () {
             const resultsContainer = document.getElementById("search-results-list");
 
-            // Get the query string from the URL and decode it
+            // Get the search query from the URL and decode it
             const queryString = new URLSearchParams(window.location.search).get("query");
 
             if (queryString) {
-                // Parse the JSON string containing the search results
-                const results = JSON.parse(decodeURIComponent(queryString));
+                // JSON files to load (adjust this if you need to load more APK files)
+                const apkFiles = ["content/app1.json", "content/app2.json", "content/app3.json"]; // Update with all your APK files
+                
+                // Filter the APKs based on the search query
+                const filteredResults = [];
 
-                // Display the search results
-                results.forEach(apk => {
-                    const apkItem = document.createElement("div");
-                    apkItem.classList.add("apk-container");
-                    apkItem.innerHTML = `
-                        <img src="${apk.image}" alt="${apk.title}">
-                        <div class="apk-info">
-                            <h2>${apk.title}</h2>
-                            <p class="size">${apk.size}</p>
-                            <p class="rating">⭐ ${apk.rating}</p>
-                            <p class="short-description">${apk.shortDescription}</p>
-                        </div>
-                    `;
-                    apkItem.onclick = () => window.open(`details.html?apk=${apk.title}`, "_blank");
-                    resultsContainer.appendChild(apkItem);
+                apkFiles.forEach(file => {
+                    fetch(file)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Check if the title or short description matches the search query
+                            if (data.title.toLowerCase().includes(queryString.toLowerCase()) || 
+                                data.shortDescription.toLowerCase().includes(queryString.toLowerCase())) {
+                                filteredResults.push(data);
+                            }
+
+                            // If all files are processed, display the results
+                            if (filteredResults.length === apkFiles.length) {
+                                displayResults(filteredResults);
+                            }
+                        })
+                        .catch(error => console.error("Error loading APK:", error));
                 });
+
+                function displayResults(results) {
+                    if (results.length > 0) {
+                        results.forEach(apk => {
+                            const apkItem = document.createElement("div");
+                            apkItem.classList.add("apk-container");
+                            apkItem.innerHTML = `
+                                <img src="${apk.image}" alt="${apk.title}">
+                                <div class="apk-info">
+                                    <h2>${apk.title}</h2>
+                                    <p class="size">${apk.size}</p>
+                                    <p class="rating">⭐ ${apk.rating}</p>
+                                    <p class="short-description">${apk.shortDescription}</p>
+                                </div>
+                            `;
+                            // Clicking on an APK opens the details page
+                            apkItem.onclick = () => window.open(`details.html?apk=${encodeURIComponent(apk.title)}`, "_blank");
+                            resultsContainer.appendChild(apkItem);
+                        });
+                    } else {
+                        resultsContainer.innerHTML = "<p>No results found.</p>";
+                    }
+                }
             } else {
-                resultsContainer.innerHTML = "<p>No results found.</p>";
+                resultsContainer.innerHTML = "<p>No search query provided.</p>";
             }
         });
     </script>
