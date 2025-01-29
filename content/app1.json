@@ -1,16 +1,10 @@
-[
-    {
-        "id": "app1",
-        "title": "Hill Climb Racing 2",
-        "size": "190M",
-        "rating": "4.5",
-        "image": "data:image/png;base64,IMAGE_DATA_HERE"
-    },
-    {
-        "id": "app2",
-        "title": "The Legend of Neverland",
-        "size": "95M",
-        "rating": "4.3",
-        "image": "dhttps://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-    }
-]
+{
+    "title": "WhatsApp",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg", 
+    "size": "190MB",
+    "rating": "3.9",
+    "version": "1.64.0",
+    "short_description": "Unlimited Money",
+    "long_description": "This is a fun racing game with endless tracks...",
+    "download_link": "https://example.com/hill-climb-racing-2.apk"
+}
