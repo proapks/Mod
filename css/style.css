@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 20px;
+}
+
+#apkGrid {
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+}
+
+/* Mobile: 4 APKs per row */
+@media (max-width: 768px) {
+    #apkGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Desktop: 10 APKs per row */
+@media (min-width: 769px) {
+    #apkGrid {
+        grid-template-columns: repeat(10, 1fr);
+    }
+}
+
+.apk-item {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.apk-item img {
+    width: 100%;
+    height: auto;
+}
