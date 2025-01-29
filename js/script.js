@@ -1,25 +1,27 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const container = document.getElementById('apk-list');
+document.addEventListener("DOMContentLoaded", function () {
+    const apkListContainer = document.getElementById("apk-list");
 
-    const apks = ['app1.json', 'app2.json']; // Add more JSON files here
+    // JSON files to load
+    const apkFiles = ["content/app1.json", "content/app2.json"];
 
-    apks.forEach(apkFile => {
-        fetch(`content/${apkFile}`)
+    // Fetch all APK JSON files
+    apkFiles.forEach(file => {
+        fetch(file)
             .then(response => response.json())
             .then(data => {
-                const apkItem = document.createElement('div');
-                apkItem.classList.add('apk-item');
-                apkItem.onclick = () => window.location.href = `details.html?app=${apkFile}`;
-
+                const apkItem = document.createElement("div");
+                apkItem.classList.add("apk-container");
                 apkItem.innerHTML = `
                     <img src="${data.image}" alt="${data.title}">
                     <div class="apk-info">
                         <h2>${data.title}</h2>
-                        <p>${data.specifications.Size} • ${data.specifications.Rating} ★</p>
+                        <p class="size">${data.size}</p>
+                        <p class="rating">⭐ ${data.rating}</p>
                     </div>
                 `;
-                container.appendChild(apkItem);
+                apkItem.onclick = () => window.open(`details.html?apk=${file}`, "_blank");
+                apkListContainer.appendChild(apkItem);
             })
-            .catch(error => console.error('Error loading APK:', error));
+            .catch(error => console.error("Error loading APK:", error));
     });
 });
