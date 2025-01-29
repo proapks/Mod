@@ -1,27 +1,26 @@
-async function loadAPKs() {
-    const apkGrid = document.getElementById("apkGrid");
+async function loadAPKDetails() {
+    const apkContainer = document.getElementById("apkContainer");
 
-    // List of APK JSON files in the 'content' folder
-    const apkFiles = ["content/app1.json", "content/app2.json"];  // You can add more files here.
+    // File names in the content folder (you can dynamically fetch these)
+    const apkFiles = ["app1.json", "app2.json"];  // Add your file names here
 
-    for (let file of apkFiles) {
-        const response = await fetch(file);
+    for (let apkFile of apkFiles) {
+        const response = await fetch(`content/${apkFile}`);
         const apkData = await response.json();
 
-        const apkDiv = document.createElement("div");
-        apkDiv.classList.add("apk-item");
-        apkDiv.innerHTML = `
-            <img src="${apkData.image}" alt="${apkData.title}">
-            <h2>${apkData.title}</h2>
+        const apkItem = document.createElement("div");
+        apkItem.classList.add("apk-item");
+
+        apkItem.innerHTML = `
+            <img src="${apkData.image}" alt="${apkData.title}" class="apk-image">
+            <div class="apk-details">
+                <h3 class="apk-title">${apkData.title}</h3>
+                <p class="apk-size">${apkData.specifications.Size}</p>
+            </div>
         `;
-
-        // Open details page when clicking on an APK
-        apkDiv.addEventListener("click", () => {
-            window.location.href = `details.html?apk=${file}`;
-        });
-
-        apkGrid.appendChild(apkDiv);
+        
+        apkContainer.appendChild(apkItem);
     }
 }
 
-document.addEventListener("DOMContentLoaded", loadAPKs);
+document.addEventListener("DOMContentLoaded", loadAPKDetails);
