@@ -1,8 +1,8 @@
 async function loadAPKDetails() {
     const apkContainer = document.getElementById("apkContainer");
 
-    // JSON Files in the content folder
-    const apkFiles = ["app1.json", "app2.json"];  // Add your JSON file names here
+    // File names of JSON files
+    const apkFiles = ["app1.json", "app2.json"];  // Add your JSON files here
 
     for (let apkFile of apkFiles) {
         const response = await fetch(`content/${apkFile}`);
