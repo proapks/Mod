@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f7f7f7;
+    background-color: #f5f5f5;
 }
 
 /* Header */
@@ -12,90 +12,107 @@ header {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 20px 0;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2rem;
+    padding: 15px;
 }
 
 /* APK Container */
 .apk-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 15px;
     padding: 20px;
     justify-items: center;
 }
 
-/* APK Item (Compact Style) */
+/* APK Item */
 .apk-item {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 200px;
+    max-width: 250px;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 10px;
 }
 
 .apk-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
 }
 
 /* APK Image */
 .apk-item img {
-    width: 100%;
-    height: 120px;
+    width: 60px;
+    height: 60px;
     object-fit: cover;
     border-radius: 8px;
+    margin-right: 10px;
 }
 
 /* APK Info */
 .apk-info {
-    padding: 10px;
-    text-align: center;
+    flex: 1;
 }
 
 .apk-info h2 {
-    font-size: 1.1rem;
-    margin: 5px 0;
+    font-size: 1.2rem;
+    margin: 0;
     color: #333;
 }
 
 .apk-info p {
     font-size: 0.9rem;
     color: #777;
-    margin: 5px 0;
+    margin: 2px 0;
 }
 
-/* Specifications */
-.apk-info .size, .apk-info .rating {
-    font-size: 0.85rem;
-    color: #555;
+/* Details Page */
+.apk-details-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
 }
 
-.apk-info .rating {
-    font-weight: bold;
+.apk-details-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-/* Link Styling */
-.apk-info a {
+.apk-details-card h2 {
+    font-size: 1.8rem;
+    margin: 10px 0;
+}
+
+.apk-details-card p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Download Button */
+.download-button {
     display: inline-block;
-    margin-top: 10px;
-    padding: 8px 15px;
+    margin-top: 15px;
+    padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
-.apk-info a:hover {
+.download-button:hover {
     background-color: #0056b3;
 }
 
-/* Media Queries for Grid Layout */
+/* Responsive */
 @media (max-width: 768px) {
     .apk-container {
         grid-template-columns: repeat(1, 1fr);
@@ -106,71 +123,4 @@ header h1 {
     .apk-container {
         grid-template-columns: repeat(2, 1fr);
     }
-}
-
-/* Details Page */
-.apk-details-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-}
-
-.apk-details-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.apk-details-card h2 {
-    font-size: 2rem;
-    margin: 20px 0;
-}
-
-.specifications,
-.long-description {
-    margin: 20px 0;
-}
-
-.specifications h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.specifications ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.specifications li {
-    font-size: 1rem;
-    margin: 5px 0;
-}
-
-.long-description h1 {
-    font-size: 1.8rem;
-    margin: 20px 0;
-}
-
-.long-description h2 {
-    font-size: 1.6rem;
-    margin: 10px 0;
-}
-
-.download-button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.download-button:hover {
-    background-color: #0056b3;
 }
