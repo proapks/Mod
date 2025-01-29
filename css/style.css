@@ -23,20 +23,20 @@ header h1 {
 /* APK Container */
 .apk-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
     padding: 20px;
     justify-items: center;
 }
 
-/* APK Item */
+/* APK Item (Compact Style) */
 .apk-item {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
     width: 100%;
-    max-width: 250px;
+    max-width: 200px;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
@@ -47,8 +47,9 @@ header h1 {
 /* APK Image */
 .apk-item img {
     width: 100%;
-    height: 150px;
+    height: 120px;
     object-fit: cover;
+    border-radius: 8px;
 }
 
 /* APK Info */
@@ -58,16 +59,28 @@ header h1 {
 }
 
 .apk-info h2 {
-    font-size: 1.2rem;
-    margin: 10px 0;
+    font-size: 1.1rem;
+    margin: 5px 0;
+    color: #333;
 }
 
 .apk-info p {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    color: #777;
     margin: 5px 0;
 }
 
-/* Link */
+/* Specifications */
+.apk-info .size, .apk-info .rating {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.apk-info .rating {
+    font-weight: bold;
+}
+
+/* Link Styling */
 .apk-info a {
     display: inline-block;
     margin-top: 10px;
@@ -82,7 +95,7 @@ header h1 {
     background-color: #0056b3;
 }
 
-/* Media Queries */
+/* Media Queries for Grid Layout */
 @media (max-width: 768px) {
     .apk-container {
         grid-template-columns: repeat(1, 1fr);
@@ -102,7 +115,7 @@ header h1 {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 80%;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
 }
 
