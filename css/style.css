@@ -7,36 +7,39 @@ body {
 }
 
 .apk-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);  /* Mobile View (1 per row) */
     gap: 20px;
     padding: 20px;
+    justify-content: center;
 }
 
+/* App Item Styles */
 .apk-item {
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Full width on mobile */
-    max-width: 350px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     padding: 15px;
-    text-align: center;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.apk-item:hover {
+    transform: scale(1.05); /* Zoom effect on hover */
 }
 
 .apk-image {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
-    margin-bottom: 15px;
+    margin-right: 20px;
 }
 
 .apk-details {
-    margin-top: 10px;
+    flex: 1;
 }
 
 .apk-title {
@@ -56,16 +59,9 @@ body {
     margin-top: 5px;
 }
 
-/* Mobile View */
-@media (max-width: 767px) {
-    .apk-item {
-        width: 100%;
-    }
-}
-
-/* Desktop View */
+/* Desktop View (2 apps per row) */
 @media (min-width: 768px) {
-    .apk-item {
-        width: calc(50% - 40px); /* 2 apps per row on desktop */
+    .apk-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 apps per row on desktop */
     }
 }
