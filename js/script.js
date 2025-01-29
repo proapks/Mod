@@ -2,7 +2,7 @@ async function loadAPKs() {
     const apkGrid = document.getElementById("apkGrid");
 
     // List of APK JSON files in the 'content' folder
-    const apkFiles = ["content/app1.json", "content/app2.json"];
+    const apkFiles = ["content/app1.json", "content/app2.json"];  // You can add more files here.
 
     for (let file of apkFiles) {
         const response = await fetch(file);
@@ -13,7 +13,6 @@ async function loadAPKs() {
         apkDiv.innerHTML = `
             <img src="${apkData.image}" alt="${apkData.title}">
             <h2>${apkData.title}</h2>
-            <p>${apkData.short_description}</p>
         `;
 
         // Open details page when clicking on an APK
