@@ -1,33 +1,31 @@
-// Function to get URL parameters
-function getQueryParams() {
+document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('apk'); // Get 'apk' parameter
-}
+    const appName = urlParams.get("app");
 
-// Function to load APK details from JSON
-async function loadAPKDetail() {
-    const apkIndex = getQueryParams(); // Get the APK index from URL
-    const apkFiles = ["app1.json", "app2.json"]; // Your JSON files here
-    const apkFile = apkFiles[apkIndex];
+    fetch(`content/${appName}.json`)
+        .then(response => response.json())
+        .then(data => {
+            // Set APK details
+            document.getElementById("apkTitle").innerText = data.title;
+            document.getElementById("apkShortDescription").innerText = data.short_description;
+            document.getElementById("apkImage").src = data.image;
 
-    const response = await fetch(`content/${apkFile}`);
-    const apkData = await response.json();
+            // Set specifications
+            const specsList = document.getElementById("apkSpecifications");
+            for (const [key, value] of Object.entries(data.specifications)) {
+                const li = document.createElement("li");
+                li.innerHTML = `<strong>${key}: </strong>${value}`;
+                specsList.appendChild(li);
+            }
 
-    const detailsContainer = document.querySelector(".apk-details-container");
+            // Set long description
+            document.getElementById("longDescriptionTitle").innerText = data.long_description.h1;
+            document.getElementById("apkLongDescription").innerText = data.long_description.content;
 
-    detailsContainer.innerHTML = `
-        <img src="${apkData.image}" alt="${apkData.title}" class="apk-image">
-        <h2 class="apk-title">${apkData.title}</h2>
-        <p><strong>Size:</strong> ${apkData.specifications.Size}</p>
-        <p><strong>Rating:</strong> ${apkData.specifications.Rating}</p>
-        <p><strong>Version:</strong> ${apkData.specifications.Version}</p>
-        <p><strong>Developer:</strong> ${apkData.specifications.Developer}</p>
-        <p><strong>Last Updated:</strong> ${apkData.specifications["Last Updated"]}</p>
-        <h3>${apkData.long_description.h1}</h3>
-        <h4>${apkData.long_description.h2}</h4>
-        <p>${apkData.long_description.content}</p>
-        <a href="${apkData.download}" class="download-btn">Download</a>
-    `;
-}
-
-document.addEventListener("DOMContentLoaded", loadAPKDetail);
+            // Set download link
+            document.getElementById("apkDownloadButton").href = data.download;
+        })
+        .catch(error => {
+            console.error('Error loading APK details:', error);
+        });
+});
