@@ -1,30 +1,33 @@
-async function loadAPKDetails() {
-    // URL पैरामीटर से फ़ाइल नाम प्राप्त करें
-    const params = new URLSearchParams(window.location.search);
-    const apkFile = params.get("apk");
+// Function to get URL parameters
+function getQueryParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('apk'); // Get 'apk' parameter
+}
 
-    if (!apkFile) return;
+// Function to load APK details from JSON
+async function loadAPKDetail() {
+    const apkIndex = getQueryParams(); // Get the APK index from URL
+    const apkFiles = ["app1.json", "app2.json"]; // Your JSON files here
+    const apkFile = apkFiles[apkIndex];
 
-    const response = await fetch(apkFile);
+    const response = await fetch(`content/${apkFile}`);
     const apkData = await response.json();
 
-    const detailsDiv = document.getElementById("apkDetails");
-    detailsDiv.innerHTML = `
-        <h1>${apkData.title}</h1>
-        <img src="${apkData.image}" alt="${apkData.title}" style="max-width: 100%; height: auto;">
-        <p>${apkData.short_description}</p>
+    const detailsContainer = document.querySelector(".apk-details-container");
 
-        <h2>Specifications</h2>
-        <ul>
-            ${Object.entries(apkData.specifications).map(([key, value]) => `<li><b>${key}:</b> ${value}</li>`).join("")}
-        </ul>
-
-        <h1>${apkData.long_description.h1}</h1>
-        <h2>${apkData.long_description.h2}</h2>
+    detailsContainer.innerHTML = `
+        <img src="${apkData.image}" alt="${apkData.title}" class="apk-image">
+        <h2 class="apk-title">${apkData.title}</h2>
+        <p><strong>Size:</strong> ${apkData.specifications.Size}</p>
+        <p><strong>Rating:</strong> ${apkData.specifications.Rating}</p>
+        <p><strong>Version:</strong> ${apkData.specifications.Version}</p>
+        <p><strong>Developer:</strong> ${apkData.specifications.Developer}</p>
+        <p><strong>Last Updated:</strong> ${apkData.specifications["Last Updated"]}</p>
+        <h3>${apkData.long_description.h1}</h3>
+        <h4>${apkData.long_description.h2}</h4>
         <p>${apkData.long_description.content}</p>
-
-        <a class="download-btn" href="${apkData.download}" download>Download</a>
+        <a href="${apkData.download}" class="download-btn">Download</a>
     `;
 }
 
-document.addEventListener("DOMContentLoaded", loadAPKDetails);
+document.addEventListener("DOMContentLoaded", loadAPKDetail);
