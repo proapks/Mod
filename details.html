@@ -8,7 +8,24 @@
 </head>
 <body>
     <div class="apk-details-container">
-        <!-- APK details will be dynamically loaded here -->
+        <div class="apk-details">
+            <img id="apkImage" src="" alt="APK Image" class="apk-image">
+            <div class="apk-info">
+                <h1 id="apkTitle"></h1>
+                <p id="apkShortDescription"></p>
+                <div class="apk-specifications">
+                    <h2>Specifications:</h2>
+                    <ul id="apkSpecifications">
+                        <!-- Specifications will be dynamically loaded -->
+                    </ul>
+                </div>
+                <div class="apk-long-description">
+                    <h2 id="longDescriptionTitle"></h2>
+                    <p id="apkLongDescription"></p>
+                </div>
+                <a id="apkDownloadButton" href="#" class="download-button">Download APK</a>
+            </div>
+        </div>
     </div>
 
     <script src="js/details.js"></script>
