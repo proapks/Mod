@@ -1,5 +1,5 @@
 async function loadAPKDetails() {
-    // Get the file name from the query string
+    // URL पैरामीटर से फ़ाइल नाम प्राप्त करें
     const params = new URLSearchParams(window.location.search);
     const apkFile = params.get("apk");
 
@@ -11,7 +11,7 @@ async function loadAPKDetails() {
     const detailsDiv = document.getElementById("apkDetails");
     detailsDiv.innerHTML = `
         <h1>${apkData.title}</h1>
-        <img src="${apkData.image}" alt="${apkData.title}">
+        <img src="${apkData.image}" alt="${apkData.title}" style="max-width: 100%; height: auto;">
         <p>${apkData.short_description}</p>
 
         <h2>Specifications</h2>
