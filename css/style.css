@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,79 +6,50 @@ body {
     background-color: #f4f4f4;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
+.apk-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
     padding: 20px;
-}
-
-h1, h2 {
-    color: #333;
-}
-
-#apkGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
 }
 
 .apk-item {
     background-color: white;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: calc(100% - 40px); /* Mobile View */
+    display: flex;
+    align-items: center;
+    padding: 15px;
 }
 
-.apk-item:hover {
-    transform: scale(1.05);
+.apk-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 20px;
 }
 
-.apk-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+.apk-details {
+    flex: 1;
 }
 
-.apk-item h2 {
-    font-size: 1.2em;
-    margin-top: 10px;
+.apk-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
 }
 
-#apkDetails {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 20px auto;
+.apk-size {
+    font-size: 14px;
+    color: #666;
 }
 
-#apkDetails img {
-    width: 100%;
-    max-width: 400px;
-    display: block;
-    margin: 20px auto;
-}
-
-.download-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-.download-btn:hover {
-    background-color: #0056b3;
+/* Desktop View */
+@media (min-width: 768px) {
+    .apk-item {
+        width: calc(50% - 40px); /* Desktop: 2 items per row */
+    }
 }
