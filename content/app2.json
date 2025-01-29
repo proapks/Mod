@@ -1,17 +1,18 @@
 {
-    "title": "Facebook Messenger",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Facebook.svg",
-    "short_description": "Facebook is a free messaging app for Android and other smartphones.",
+    "title": "WhatsApp Messenger",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
+    "short_description": "WhatsApp is a free messaging app for Android and other smartphones.",
     "specifications": {
         "Version": "2.23.24.78",
         "Size": "50MB",
-        "Developer": "Facebook LLC",
+        "Rating": "4.5/5",
+        "Developer": "WhatsApp LLC",
         "Last Updated": "January 2025"
     },
     "long_description": {
-        "h1": "Why Use Facebook?",
+        "h1": "Why Use WhatsApp?",
         "h2": "Fast & Secure",
-        "content": "Facebook provides end-to-end encryption for all messages and calls."
+        "content": "WhatsApp provides end-to-end encryption for all messages and calls."
     },
-    "download": "https://yourdirectapilink.com/facebook.apk"
+    "download": "https://yourdirectapilink.com/whatsapp.apk"
 }
