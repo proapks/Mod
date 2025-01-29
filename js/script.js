@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const apkListContainer = document.getElementById("apk-list");
 
     // JSON files to load
-    const apkFiles = ["content/app1.json", "content/app2.json"];
+    const apkFiles = ["content/app1.json","content/app2.json", "content/app3.json"];
 
     // Fetch all APK JSON files
     apkFiles.forEach(file => {
