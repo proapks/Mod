@@ -1,6 +1,6 @@
 {
     "title": "App 1",
-    "image": "images/app1.jpg",
+    "image": "app1.jpg",  // Image is included here
     "short_description": "This is a brief description of App 1.",
     "specifications": {
         "Version": "1.0",
