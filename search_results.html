@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Search Results</h1>
+    </header>
+
+    <main id="search-results-list">
+        <!-- Search results will be loaded here dynamically -->
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const resultsContainer = document.getElementById("search-results-list");
+
+            // Get the query string from the URL and decode it
+            const queryString = new URLSearchParams(window.location.search).get("query");
+
+            if (queryString) {
+                // Parse the JSON string containing the search results
+                const results = JSON.parse(decodeURIComponent(queryString));
+
+                // Display the search results
+                results.forEach(apk => {
+                    const apkItem = document.createElement("div");
+                    apkItem.classList.add("apk-container");
+                    apkItem.innerHTML = `
+                        <img src="${apk.image}" alt="${apk.title}">
+                        <div class="apk-info">
+                            <h2>${apk.title}</h2>
+                            <p class="size">${apk.size}</p>
+                            <p class="rating">⭐ ${apk.rating}</p>
+                            <p class="short-description">${apk.shortDescription}</p>
+                        </div>
+                    `;
+                    apkItem.onclick = () => window.open(`details.html?apk=${apk.title}`, "_blank");
+                    resultsContainer.appendChild(apkItem);
+                });
+            } else {
+                resultsContainer.innerHTML = "<p>No results found.</p>";
+            }
+        });
+    </script>
+
+</body>
+</html>
