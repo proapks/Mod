@@ -1,17 +1,16 @@
 {
-    "title": "WhatsApp Messenger",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
-    "short_description": "WhatsApp is a free messaging app for Android and other smartphones.",
+    "title": "App 1",
+    "image": "images/app1.jpg",
+    "short_description": "This is a brief description of App 1.",
     "specifications": {
-        "Version": "2.23.24.78",
-        "Size": "50MB",
-        "Developer": "WhatsApp LLC",
-        "Last Updated": "January 2025"
+        "Version": "1.0",
+        "Size": "10MB",
+        "Required Android": "5.0 and up"
     },
     "long_description": {
-        "h1": "Why Use WhatsApp?",
-        "h2": "Fast & Secure",
-        "content": "WhatsApp provides end-to-end encryption for all messages and calls..."
+        "h1": "App 1 Full Description",
+        "h2": "Why You Should Use App 1",
+        "content": "This is a detailed description of App 1. It provides XYZ features."
     },
-    "download": "https://yourdirectapilink.com/whatsapp.apk"
+    "download": "https://example.com/download/app1.apk"
 }
