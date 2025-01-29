@@ -1,31 +1,32 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const appName = urlParams.get("app");
+const urlParams = new URLSearchParams(window.location.search);
+const apkId = urlParams.get('id');
 
-    fetch(`content/${appName}.json`)
-        .then(response => response.json())
-        .then(data => {
-            // Set APK details
-            document.getElementById("apkTitle").innerText = data.title;
-            document.getElementById("apkShortDescription").innerText = data.short_description;
-            document.getElementById("apkImage").src = data.image;
-
-            // Set specifications
-            const specsList = document.getElementById("apkSpecifications");
-            for (const [key, value] of Object.entries(data.specifications)) {
-                const li = document.createElement("li");
-                li.innerHTML = `<strong>${key}: </strong>${value}`;
-                specsList.appendChild(li);
-            }
-
-            // Set long description
-            document.getElementById("longDescriptionTitle").innerText = data.long_description.h1;
-            document.getElementById("apkLongDescription").innerText = data.long_description.content;
-
-            // Set download link
-            document.getElementById("apkDownloadButton").href = data.download;
-        })
-        .catch(error => {
-            console.error('Error loading APK details:', error);
-        });
-});
+fetch(`content/app1.json`)
+    .then(response => response.json())
+    .then(data => {
+        if (apkId == 1) {
+            const apkDetailsContainer = document.querySelector('.apk-details');
+            apkDetailsContainer.innerHTML = `
+                <div class="apk-details-card">
+                    <img src="${data.image}" alt="${data.title}" class="apk-image">
+                    <h2>${data.title}</h2>
+                    <p>${data.short_description}</p>
+                    <div class="specifications">
+                        <h3>Specifications</h3>
+                        <ul>
+                            <li>Version: ${data.specifications.Version}</li>
+                            <li>Size: ${data.specifications.Size}</li>
+                            <li>Developer: ${data.specifications.Developer}</li>
+                            <li>Last Updated: ${data.specifications['Last Updated']}</li>
+                        </ul>
+                    </div>
+                    <div class="long-description">
+                        <h1>${data.long_description.h1}</h1>
+                        <h2>${data.long_description.h2}</h2>
+                        <p>${data.long_description.content}</p>
+                    </div>
+                    <a href="${data.download}" class="download-button">Download APK</a>
+                </div>
+            `;
+        }
+    });
