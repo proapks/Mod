@@ -1,8 +1,8 @@
 async function loadAPKs() {
     const apkGrid = document.getElementById("apkGrid");
 
-    // Example: List of APKs (JSON files in 'content' folder)
-    const apkFiles = ["../content/app1.json", "../content/app2.json"];
+    // List of APK JSON files in the 'content' folder
+    const apkFiles = ["content/app1.json", "content/app2.json"];
 
     for (let file of apkFiles) {
         const response = await fetch(file);
@@ -16,7 +16,7 @@ async function loadAPKs() {
             <p>${apkData.short_description}</p>
         `;
 
-        // Open details page with query parameter
+        // Open details page when clicking on an APK
         apkDiv.addEventListener("click", () => {
             window.location.href = `details.html?apk=${file}`;
         });
