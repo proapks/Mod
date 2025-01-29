@@ -1,4 +1,5 @@
 async function loadAPKDetails() {
+    // Get the file name from the query string
     const params = new URLSearchParams(window.location.search);
     const apkFile = params.get("apk");
 
