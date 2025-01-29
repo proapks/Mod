@@ -1,17 +1,17 @@
 {
-    "title": "WhatsApp Messenger",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
-    "short_description": "WhatsApp is a free messaging app for Android and other smartphones.",
+    "title": "Telegram Messenger",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/64/Telegram_logo.svg",
+    "short_description": "Telegram is a cloud-based messaging app for mobile and desktop.",
     "specifications": {
-        "Version": "2.23.24.78",
-        "Size": "50MB",
-        "Developer": "WhatsApp LLC",
+        "Version": "8.0.0",
+        "Size": "60MB",
+        "Developer": "Telegram Messenger LLP",
         "Last Updated": "January 2025"
     },
     "long_description": {
-        "h1": "Why Use WhatsApp?",
-        "h2": "Fast & Secure",
-        "content": "WhatsApp provides end-to-end encryption for all messages and calls."
+        "h1": "Why Use Telegram?",
+        "h2": "Secure & Fast",
+        "content": "Telegram provides encrypted messaging with speed and security."
     },
-    "download": "https://yourdirectapilink.com/whatsapp.apk"
+    "download": "https://yourdirectapilink.com/telegram.apk"
 }
