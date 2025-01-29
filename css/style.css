@@ -1,38 +1,52 @@
-body {
-    font-family: Arial, sans-serif;
+/* 🔹 Reset Default Styles */
+* {
     margin: 0;
     padding: 0;
-    background: #f5f5f5;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
+/* 🔹 Body Background */
+body {
+    background: #f4f4f4;
+    color: #333;
+}
+
+/* 🔹 Header */
 header {
     background: #fff;
     padding: 15px;
     text-align: center;
     font-size: 24px;
     font-weight: bold;
-}
-
-#apk-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
-}
-
-.apk-container {
-    display: flex;
-    align-items: center;
-    width: 90%;
-    max-width: 600px;
-    background: #fff;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* 🔹 APK List (Grid Layout) */
+#apk-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 📌 Mobile: 1, Desktop: 2 */
+    gap: 15px;
+    padding: 20px;
+}
+
+/* 🔹 APK Container */
+.apk-container {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.apk-container:hover {
+    transform: scale(1.02);
+}
+
+/* 🔹 APK Image */
 .apk-container img {
     width: 60px;
     height: 60px;
@@ -40,6 +54,7 @@ header {
     margin-right: 10px;
 }
 
+/* 🔹 APK Info */
 .apk-info h2 {
     margin: 0;
     font-size: 18px;
@@ -50,33 +65,69 @@ header {
     color: gray;
 }
 
+/* 🔹 Details Page */
 #apk-details {
-    text-align: center;
-    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
     background: #fff;
-}
-
-#apk-details img {
-    width: 120px;
-    height: 120px;
-    border-radius: 15px;
-}
-
-.specs {
-    text-align: left;
-    display: inline-block;
-    padding: 10px;
-    background: #f9f9f9;
+    padding: 20px;
     border-radius: 10px;
-    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* 🔹 APK Image in Details */
+#apk-details img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* 🔹 APK Title */
+#apk-details h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* 🔹 Short Description */
+#apk-details p.short-desc {
+    font-size: 16px;
+    color: gray;
+    margin-bottom: 15px;
+}
+
+/* 🔹 Specification Box */
+.specs {
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.specs p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* 🔹 Long Description */
+#apk-details .long-desc {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* 🔹 Download Button */
 .download-btn {
     display: block;
-    background: #007bff;
+    text-align: center;
+    background: #ff4500;
     color: #fff;
-    padding: 10px;
-    margin-top: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 18px;
+    margin-top: 20px;
     text-decoration: none;
-    border-radius: 5px;
+    font-weight: bold;
+}
+
+.download-btn:hover {
+    background: #e03e00;
 }
