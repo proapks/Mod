@@ -1,60 +1,65 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const apkList = document.getElementById("apk-list");
+    const apkListContainer = document.getElementById("apk-list");
     const searchInput = document.getElementById("search-input");
 
-    let allAPKs = []; // Store all APKs for filtering
+    // JSON फाइल्स का नाम
+    const apkFiles = ["app1.json", "app2.json", "app3.json"]; 
 
-    // Automatically fetch all JSON files from 'content' folder
-    async function loadAPKData() {
-        try {
-            const response = await fetch("content/apk-list.json"); // JSON file that stores all APK file names
-            const apkFiles = await response.json();
-            allAPKs = [];
+    // सभी APKs लोड करने के लिए
+    async function fetchAPKs() {
+        let allApks = [];
 
-            for (let file of apkFiles) {
-                try {
-                    const res = await fetch(`content/${file}`);
-                    const apkData = await res.json();
-                    allAPKs.push(apkData);
-                } catch (error) {
-                    console.error(`Error loading ${file}:`, error);
-                }
+        for (const file of apkFiles) {
+            try {
+                const response = await fetch(`content/${file}`);
+                const apk = await response.json();
+                allApks.push(apk);
+            } catch (error) {
+                console.error(`Error loading ${file}:`, error);
             }
-            displayAPKs(allAPKs);
-        } catch (error) {
-            console.error("Error fetching APK list:", error);
         }
+
+        displayAPKs(allApks);
     }
 
-    // Function to display APKs
+    // 🔹 APKs को डिस्प्ले करने के लिए
     function displayAPKs(apks) {
-        apkList.innerHTML = "";
+        apkListContainer.innerHTML = ""; // पुरानी लिस्ट क्लियर करो
+
         apks.forEach(apk => {
-            const apkDiv = document.createElement("div");
-            apkDiv.classList.add("apk-container");
-            apkDiv.innerHTML = `
+            const apkCard = document.createElement("div");
+            apkCard.classList.add("apk-card");
+            apkCard.innerHTML = `
                 <img src="${apk.image}" alt="${apk.title}">
                 <div class="apk-info">
                     <h2>${apk.title}</h2>
-                    <p>${apk.size} | ⭐ ${apk.rating}</p>
+                    <p>Size: ${apk.size} | ⭐ ${apk.rating}</p>
                 </div>
             `;
-            apkDiv.addEventListener("click", () => {
-                window.open(`details.html?app=${apk.title}`, "_blank");
+
+            // APK पर क्लिक करने से डिटेल्स खुलेगा
+            apkCard.addEventListener("click", function () {
+                window.open(`details.html?apk=${encodeURIComponent(apk.title)}`, "_blank");
             });
-            apkList.appendChild(apkDiv);
+
+            apkListContainer.appendChild(apkCard);
         });
     }
 
-    // Live Search Function
+    // 🔹 लाइव सर्च फंक्शन
     searchInput.addEventListener("input", function () {
-        const query = searchInput.value.toLowerCase();
-        const filteredAPKs = allAPKs.filter(apk => 
-            apk.title.toLowerCase().includes(query)
-        );
-        displayAPKs(filteredAPKs);
+        const searchValue = searchInput.value.toLowerCase();
+        const apkCards = document.querySelectorAll(".apk-card");
+
+        apkCards.forEach(card => {
+            const title = card.querySelector("h2").innerText.toLowerCase();
+            if (title.includes(searchValue)) {
+                card.style.display = "flex"; // मैच होने पर दिखाओ
+            } else {
+                card.style.display = "none"; // नहीं तो छुपाओ
+            }
+        });
     });
 
-    // Load APK Data when page loads
-    loadAPKData();
+    fetchAPKs(); // 🔹 पेज लोड होते ही APK लोड करो
 });
