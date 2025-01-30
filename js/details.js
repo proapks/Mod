@@ -1,25 +1,31 @@
-const githubContentUrl = "https://raw.githubusercontent.com/<username>/<repository>/main/content/";
-
+// Fetch APK details from the corresponding JSON file
 async function fetchAPKDetails() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const apkTitle = urlParams.get('apk');  // Get the title from the query string
-    
-    try {
-        const response = await fetch(githubContentUrl + apkTitle + ".json");
-        const data = await response.json();
-        
-        // Display the APK details on the page
-        document.getElementById('apkTitle').textContent = data.title;
-        document.getElementById('apkImage').src = data.image;
-        document.getElementById('apkDescription').textContent = data.description;
-        document.getElementById('apkSize').textContent = "Size: " + data.specifications.size;
-        document.getElementById('apkVersion').textContent = "Version: " + data.specifications.version;
-        document.getElementById('apkDeveloper').textContent = "Developer: " + data.specifications.developer;
-        document.getElementById('apkLongDescription').innerHTML = data.long_description;
-        document.getElementById('downloadBtn').href = data.download_link;
-    } catch (error) {
-        console.error("Error fetching APK details:", error);
-    }
+  // Get the app ID from the URL query string (e.g., ?id=app1)
+  const urlParams = new URLSearchParams(window.location.search);
+  const appId = urlParams.get('id');  // Get the app ID passed in the URL
+
+  try {
+    // Fetch the corresponding JSON file based on the app ID
+    const response = await fetch(`content/${appId}.json`);
+    const appData = await response.json();
+
+    // Populate the details page with the APK information
+    document.getElementById('apkTitle').textContent = appData.title;
+    document.getElementById('apkImage').src = appData.image;
+    document.getElementById('apkImage').alt = appData.title;
+    document.getElementById('apkDescription').textContent = appData.description;
+    document.getElementById('apkSpecs').innerHTML = `
+      <strong>Size:</strong> ${appData.specifications.size} <br>
+      <strong>Version:</strong> ${appData.specifications.version} <br>
+      <strong>Category:</strong> ${appData.specifications.category} <br>
+    `;
+    document.getElementById('apkLongDescription').innerHTML = appData.longDescription;
+    document.getElementById('downloadBtn').href = appData.downloadLink;
+
+  } catch (error) {
+    console.error("Error fetching APK details:", error);
+  }
 }
 
+// Call the function to fetch and display APK details when the page loads
 fetchAPKDetails();
