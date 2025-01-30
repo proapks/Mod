@@ -1,12 +1,13 @@
 {
-    "title": "APK Title 1",
-    "description": "This is a description for APK 1.",
-    "download_link": "https://example.com/download-apk1",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Facebook_logo.svg",
-    "specifications": {
-        "size": "50 MB",
-        "version": "1.0",
-        "developer": "Developer Name"
-    },
-    "long_description": "This is the full description of APK 1. It contains more details."
+  "title": "WhatsApp",
+  "description": "This is a short description of the APK.",
+  "image": "path/to/image.jpg",
+  "downloadLink": "https://example.com/download",
+  "specifications": {
+    "size": "50MB",
+    "version": "1.0.0",
+    "category": "Utility"
+  },
+  "longDescription": "<h1>Long Description</h1><p>This is a detailed description.</p>",
+  "tags": "utility, apk, free"
 }
