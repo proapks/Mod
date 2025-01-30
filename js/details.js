@@ -1,30 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
-    const apkFile = params.get("apk");
+    const apkDetailsDiv = document.getElementById("apk-details");
 
-    if (!apkFile) {
-        document.getElementById("apk-details").innerHTML = "<p>APK not found!</p>";
+    // URL से APK ID निकालो
+    const urlParams = new URLSearchParams(window.location.search);
+    const apkId = urlParams.get("app");
+
+    if (!apkId) {
+        apkDetailsDiv.innerHTML = "<p>APK not found!</p>";
         return;
     }
 
-    fetch(apkFile)
+    // JSON फाइल लोड करो
+    fetch(`content/${apkId}.json`)
         .then(response => response.json())
-        .then(data => {
-            document.getElementById("apk-details").innerHTML = `
-                <img src="${data.image}" alt="${data.title}">
-                <h1>${data.title}</h1>
-                <p class="short-description">${data.short_description}</p>
-
-                <div class="specs">
-                    <p><strong>Size:</strong> ${data.size}</p>
-                    <p><strong>Rating:</strong> ⭐ ${data.rating}</p>
-                    <p><strong>Version:</strong> ${data.version}</p>
-                </div>
-
-                <p class="long-description">${data.long_description}</p>
-
-                <a href="${data.download_link}" class="download-btn">Download</a>
+        .then(apk => {
+            apkDetailsDiv.innerHTML = `
+                <h1>${apk.title}</h1>
+                <img src="${apk.image}" alt="${apk.title}">
+                <p><strong>Size:</strong> ${apk.size}</p>
+                <p><strong>Rating:</strong> ⭐ ${apk.rating}</p>
+                <p><strong>Version:</strong> ${apk.version}</p>
+                <p><strong>Description:</strong> ${apk.short_description}</p>
+                <p>${apk.long_description}</p>
+                <a href="${apk.download_link}" class="download-btn">Download</a>
             `;
         })
-        .catch(error => console.error("Error loading APK details:", error));
+        .catch(error => {
+            apkDetailsDiv.innerHTML = "<p>Error loading APK details.</p>";
+            console.error("Error:", error);
+        });
 });
