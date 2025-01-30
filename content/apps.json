@@ -1,0 +1,24 @@
+[
+    {
+        "id": "whatsapp",
+        "title": "WhatsApp",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
+        "size": "190MB",
+        "rating": "4.5",
+        "version": "2.23.24.78",
+        "short_description": "Fast and secure messaging app.",
+        "long_description": "WhatsApp provides end-to-end encryption for messages and calls.",
+        "download_link": "https://example.com/whatsapp.apk"
+    },
+    {
+        "id": "facebook",
+        "title": "Facebook",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Facebook.svg",
+        "size": "250MB",
+        "rating": "4.2",
+        "version": "1.64.0",
+        "short_description": "Connect with friends and the world around you.",
+        "long_description": "Facebook helps you stay connected and share moments with friends.",
+        "download_link": "https://example.com/facebook.apk"
+    }
+]
