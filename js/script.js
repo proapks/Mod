@@ -4,24 +4,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let allAPKs = []; // Store all APKs for filtering
 
-    // Fetch all APK files inside "content" folder
+    // Automatically fetch all JSON files from 'content' folder
     async function loadAPKData() {
-        const apkFiles = ["app1.json", "app2.json", "app3.json"]; // List all JSON files here
-        allAPKs = [];
+        try {
+            const response = await fetch("content/apk-list.json"); // JSON file that stores all APK file names
+            const apkFiles = await response.json();
+            allAPKs = [];
 
-        for (let file of apkFiles) {
-            try {
-                const response = await fetch(`content/${file}`);
-                const apkData = await response.json();
-                allAPKs.push(apkData);
-            } catch (error) {
-                console.error(`Error loading ${file}:`, error);
+            for (let file of apkFiles) {
+                try {
+                    const res = await fetch(`content/${file}`);
+                    const apkData = await res.json();
+                    allAPKs.push(apkData);
+                } catch (error) {
+                    console.error(`Error loading ${file}:`, error);
+                }
             }
+            displayAPKs(allAPKs);
+        } catch (error) {
+            console.error("Error fetching APK list:", error);
         }
-        displayAPKs(allAPKs);
     }
 
-    // Function to Display APKs
+    // Function to display APKs
     function displayAPKs(apks) {
         apkList.innerHTML = "";
         apks.forEach(apk => {
@@ -41,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Function to Filter APKs Live
+    // Live Search Function
     searchInput.addEventListener("input", function () {
         const query = searchInput.value.toLowerCase();
         const filteredAPKs = allAPKs.filter(apk => 
