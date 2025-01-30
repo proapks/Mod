@@ -11,9 +11,9 @@
         "download_link": "https://example.com/whatsapp.apk"
     },
     {
-        "id": "facebook",
+        "id": "fb",
         "title": "Facebook",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Facebook.svg",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Facebook_logo.svg",
         "size": "250MB",
         "rating": "4.2",
         "version": "1.64.0",
