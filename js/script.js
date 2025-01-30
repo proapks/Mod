@@ -1,44 +1,43 @@
-const githubContentUrl = "https://raw.githubusercontent.com/<username>/<repository>/main/content/";
+<script>
+const jsonFiles = ['content/app1.json', 'content/app2.json']; // List of JSON files for the APKs
+const container = document.getElementById('wallpaperContainer');
 
+// Function to fetch the content from each JSON file and display it
 async function fetchAPKs() {
+  for (let i = 0; i < jsonFiles.length; i++) {
     try {
-        const response = await fetch(githubContentUrl + "app1.json");
-        const data = await response.json();
-        const container = document.getElementById('apkContainer');
-        const apkBox = `
-            <div class="apk-box">
-                <img src="${data.image}" alt="${data.title}" class="apk-image">
-                <div class="content">
-                    <h2 class="title">${data.title}</h2>
-                    <p class="description">${data.description}</p>
-                    <p class="size">Size: ${data.specifications.size}</p>
-                    <a href="details.html?apk=${data.title}" class="download-btn">View Details</a>
-                </div>
+      const response = await fetch(jsonFiles[i]);
+      const data = await response.json();
+
+      // Extract details from the JSON
+      const { title, description, image, specifications, long_description, download_link } = data;
+
+      // Create HTML structure for each APK
+      const apkBox = `
+        <div class="wallpaper-box">
+          <img src="${image}" alt="${title}" class="wallpaper-image">
+          <div class="content">
+            <h2 class="title">${title}</h2>
+            <p class="description">${description}</p>
+            <div class="specifications">
+              <p>Size: ${specifications.size}</p>
+              <p>Version: ${specifications.version}</p>
+              <p>Rating: ${specifications.rating}</p>
             </div>
-        `;
-        container.innerHTML += apkBox;
+            <p class="long-description">${long_description}</p>
+            <a href="${download_link}" target="_blank" class="download-btn">Download</a>
+          </div>
+        </div>
+      `;
+
+      // Append the APK box to the container
+      container.innerHTML += apkBox;
     } catch (error) {
-        console.error("Error fetching APK details:", error);
+      console.error('Error fetching APK data:', error);
     }
+  }
 }
 
-function searchPosts() {
-    const query = document.getElementById('searchInput').value.toLowerCase();
-    const posts = document.querySelectorAll('.apk-box');
-    posts.forEach(post => {
-        const title = post.querySelector('.title').textContent.toLowerCase();
-        if (title.includes(query)) {
-            post.style.display = 'flex';
-        } else {
-            post.style.display = 'none';
-        }
-    });
-}
-
-function toggleSearchBox(event) {
-    if (event.target === document.getElementById("searchInput")) return;
-    const searchBtn = document.getElementById('searchBtn');
-    searchBtn.classList.toggle('active');
-}
-
+// Call the function to load APK data
 fetchAPKs();
+</script>
