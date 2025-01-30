@@ -1,0 +1,12 @@
+{
+    "title": "APK Title 1",
+    "description": "This is a description for APK 1.",
+    "download_link": "https://example.com/download-apk1",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Facebook_logo.svg",
+    "specifications": {
+        "size": "50 MB",
+        "version": "1.0",
+        "developer": "Developer Name"
+    },
+    "long_description": "This is the full description of APK 1. It contains more details."
+}
