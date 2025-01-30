@@ -2,12 +2,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const apkList = document.getElementById("apk-list");
     const searchInput = document.getElementById("search-input");
 
+    let allAPKs = []; // Store all APKs for filtering
+
     // Fetch APK Data
     fetch("content/apps.json")
         .then(response => response.json())
         .then(data => {
-            displayAPKs(data); // Show all APKs initially
-            searchInput.addEventListener("input", () => filterAPKs(data));
+            allAPKs = data; // Store data globally
+            displayAPKs(allAPKs); // Show all APKs initially
         })
         .catch(error => console.error("Error loading APKs:", error));
 
@@ -31,10 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Function to Filter APKs Based on Search Query
-    function filterAPKs(apks) {
+    // Function to Filter APKs Live
+    searchInput.addEventListener("input", function () {
         const query = searchInput.value.toLowerCase();
-        const filteredAPKs = apks.filter(apk => apk.title.toLowerCase().includes(query));
+        const filteredAPKs = allAPKs.filter(apk => apk.title.toLowerCase().includes(query));
         displayAPKs(filteredAPKs);
-    }
+    });
 });
