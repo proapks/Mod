@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="description" content="Best APK Download Website">
-    <title>APK Download Site</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APK Website</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>APK Download Site</h1>
-    <button class="search-btn" id="searchBtn" onclick="toggleSearchBox(event)">
-        <i class="fas fa-search"></i>
-        <input type="text" id="searchInput" placeholder="Search APKs..." oninput="searchPosts()">
-    </button>
-    <div class="apk-container" id="apkContainer"></div>
-    <footer>© 2025 APK Download Site | All Rights Reserved</footer>
+  <h1>APK Downloads</h1>
 
-    <script src="assets/js/script.js"></script>
+  <!-- Search box -->
+  <input type="text" id="searchInput" placeholder="Search for APKs...">
+
+  <!-- Posts Container -->
+  <div id="wallpaperContainer"></div>  <!-- This is where the posts will be added -->
+
+  <script src="js/script.js"></script>
 </body>
 </html>
