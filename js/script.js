@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchBox = document.getElementById("search-box");
 
     // Fetch APK Data
-    fetch("content/apps.json")
+    fetch("content/apps.json","content/apps1.json")
         .then(response => response.json())
         .then(data => {
             displayAPKs(data);
