@@ -2,16 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="APK Download Details">
     <title>APK Details</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
-    <div id="apk-details">
-        <!-- APK Details will be loaded here -->
+    <div id="apkDetails" class="apk-details-container">
+        <h1 id="apkTitle">Loading...</h1>
+        <img id="apkImage" src="" alt="APK Image" class="apk-image">
+        <p id="apkDescription"></p>
+        <div id="apkSpecifications">
+            <p id="apkSize">Size: </p>
+            <p id="apkVersion">Version: </p>
+            <p id="apkDeveloper">Developer: </p>
+        </div>
+        <div id="apkLongDescription"></div>
+        <a href="#" id="downloadBtn" class="download-btn">Download</a>
     </div>
-
-    <script src="js/details.js"></script>
+    <footer>© 2025 APK Download Site | All Rights Reserved</footer>
+    
+    <script src="assets/js/details.js"></script>
 </body>
 </html>
