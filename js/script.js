@@ -4,14 +4,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let allAPKs = []; // Store all APKs for filtering
 
-    // Fetch APK Data
-    fetch("content/apps.json")
-        .then(response => response.json())
-        .then(data => {
-            allAPKs = data; // Store data globally
-            displayAPKs(allAPKs); // Show all APKs initially
-        })
-        .catch(error => console.error("Error loading APKs:", error));
+    // Fetch all APK files inside "content" folder
+    async function loadAPKData() {
+        const apkFiles = ["app1.json", "app2.json", "app3.json"]; // List all JSON files here
+        allAPKs = [];
+
+        for (let file of apkFiles) {
+            try {
+                const response = await fetch(`content/${file}`);
+                const apkData = await response.json();
+                allAPKs.push(apkData);
+            } catch (error) {
+                console.error(`Error loading ${file}:`, error);
+            }
+        }
+        displayAPKs(allAPKs);
+    }
 
     // Function to Display APKs
     function displayAPKs(apks) {
@@ -27,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             `;
             apkDiv.addEventListener("click", () => {
-                window.open(`details.html?app=${apk.id}`, "_blank");
+                window.open(`details.html?app=${apk.title}`, "_blank");
             });
             apkList.appendChild(apkDiv);
         });
@@ -36,7 +44,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to Filter APKs Live
     searchInput.addEventListener("input", function () {
         const query = searchInput.value.toLowerCase();
-        const filteredAPKs = allAPKs.filter(apk => apk.title.toLowerCase().includes(query));
+        const filteredAPKs = allAPKs.filter(apk => 
+            apk.title.toLowerCase().includes(query)
+        );
         displayAPKs(filteredAPKs);
     });
+
+    // Load APK Data when page loads
+    loadAPKData();
 });
