@@ -12,7 +12,7 @@ async function fetchAPKs() {
                     <h2 class="title">${data.title}</h2>
                     <p class="description">${data.description}</p>
                     <p class="size">Size: ${data.specifications.size}</p>
-                    <a href="${data.download_link}" target="_blank" class="download-btn">Download</a>
+                    <a href="details.html?apk=${data.title}" class="download-btn">View Details</a>
                 </div>
             </div>
         `;
